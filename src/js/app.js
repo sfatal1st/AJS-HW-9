@@ -1,11 +1,5 @@
-// TODO: write code here
+import GamePlay from './gamePlay';
 
-// comment this to pass build
-const unusedVariable = "variable";
-
-// for demonstration purpose only
-export default function demo(value) {
-  return `Demo: ${value}`;
-}
-
-console.log("app.js included");
+const play = new GamePlay();
+play.init();
+setInterval(() => play.redrawPosition(), 1500);

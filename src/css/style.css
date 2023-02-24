@@ -1,3 +1,59 @@
-body {
-    color: #999;
-}
+:root {
+    --cell-size: 120px;
+  }
+  
+  html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+  body {
+    background: #faaa00;
+    font-size: 16px;
+  }
+   
+  .board-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 2px;
+    grid-row-gap: 2px;
+  }
+  
+  .cell {
+    background: #ffeeff;
+    position: relative;
+  }
+  
+  .map-tile {
+    width: var(--cell-size);
+    height: var(--cell-size);
+  }
+  
+   .character {
+    width: var(--cell-size);
+    height: var(--cell-size);
+    position: absolute;
+    background-image: url('../img/goblin.png');
+    z-index: 99;
+  }
+  
+   @keyframes fade {
+    from {
+      opacity: 0;
+      top: calc(var(--cell-size) * 0.5);
+      font-size: 1rem;
+    }
+    to {
+      opacity: 1;
+      top: -20px;
+      font-size: 1.5rem;
+    }
+  }
+  
