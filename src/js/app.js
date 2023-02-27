@@ -1,4 +1,4 @@
-import GamePlay from './gamePlay';
+import GamePlay from "./gamePlay";
 
 const play = new GamePlay();
 play.init();
