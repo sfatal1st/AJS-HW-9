@@ -11,6 +11,11 @@
     background: #faaa00;
     font-size: 16px;
   }
+
+  .balls {
+    text-align: center;
+    margin: 50px 0;
+  }
    
   .board-container {
     display: flex;
@@ -29,6 +34,7 @@
   .cell {
     background: #ffeeff;
     position: relative;
+    cursor: url('../img/cursor.png'), auto;
   }
   
   .map-tile {
@@ -43,17 +49,3 @@
     background-image: url('../img/goblin.png');
     z-index: 99;
   }
-  
-   @keyframes fade {
-    from {
-      opacity: 0;
-      top: calc(var(--cell-size) * 0.5);
-      font-size: 1rem;
-    }
-    to {
-      opacity: 1;
-      top: -20px;
-      font-size: 1.5rem;
-    }
-  }
-  

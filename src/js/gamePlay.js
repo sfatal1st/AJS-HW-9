@@ -3,14 +3,21 @@ export default class GamePlay {
     this.boardSize = 4;
     this.container = null;
     this.boardEl = null;
+    this.ballsEl = null;
     this.cells = [];
+    this.cellEl = null;
+    this.position = 0;
+    this.balls = 0;
+    this.lose = 0;
+    this.onClickCell = this.onClickCell.bind(this);
   }
 
   drawUi() {
-    this.boardEl = document.querySelector(`.board`);
+    this.ballsEl = document.querySelector(".balls");
+    this.boardEl = document.querySelector(".board");
     for (let i = 0; i < this.boardSize * this.boardSize; i += 1) {
-      const cellEl = document.createElement(`div`);
-      cellEl.classList.add(`cell`, `map-tile`);
+      const cellEl = document.createElement("div");
+      cellEl.classList.add("cell", "map-tile");
       this.boardEl.appendChild(cellEl);
     }
 
@@ -18,19 +25,32 @@ export default class GamePlay {
   }
 
   redrawPosition() {
-    let position = Math.floor(Math.random() * (this.boardSize ** 2));
+    this.position = Math.floor(Math.random() * 16);
     for (const cell of this.cells) {
-      cell.innerHTML = ``;
+      cell.innerHTML = "";
     }
-    const cellEl = this.boardEl.children[position];
-    const charEl = document.createElement(`div`);
-    charEl.classList.add(`character`);
-    cellEl.appendChild(charEl);
+    this.cellEl = this.boardEl.children[this.position];
+    const charEl = document.createElement("div");
+    charEl.classList.add("character");
+    this.cellEl.appendChild(charEl);
   }
 
   init() {
     document.addEventListener(`DOMContentLoaded`, () => {
       this.drawUi();
+      this.boardEl.addEventListener("click", this.onClickCell);
     });
+  }
+
+  onClickCell(e) {
+    if (e.target.closest(".character") !== null) {
+      this.balls += 1;
+      this.redrawPosition();
+      this.ballsEl.textContent = "Баллов: " + this.balls;
+    } else if (++this.lose > 5) {
+      this.ballsEl.textContent = "Вы проиграли!";
+      this.balls = 0;
+      this.lose = 0;
+    }
   }
 }
