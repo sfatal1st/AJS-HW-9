@@ -1,5 +1,7 @@
-import GamePlay from "./gamePlay";
+import AddCard from "./addCard";
+import DeleteCard from "./deleteCard";
+import DragDrop from "./DragDrop";
 
-const play = new GamePlay();
-play.init();
-setInterval(() => play.redrawPosition(), 1000);
+const addCard = new AddCard();
+const deleteCard = new DeleteCard();
+const dragDrop = new DragDrop();
