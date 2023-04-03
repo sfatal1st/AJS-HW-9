@@ -1,7 +1,8 @@
-const buttons = document.querySelectorAll('.button');
-buttons.forEach((button) => {
-  button.addEventListener('click', () => {
-    const content = button.nextElementSibling;
-    content.style.display = (content.style.display === 'none') ? 'block' : 'none';
+const collapsibleHeaders = document.querySelectorAll('.collapsible-header');
+
+collapsibleHeaders.forEach(header => {
+  header.addEventListener('click', () => {
+    const content = header.nextElementSibling;
+    content.classList.toggle('active');
   });
 });
